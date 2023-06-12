@@ -1,10 +1,13 @@
 package com.library.library_management.config;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
+import org.springframework.web.filter.HttpPutFormContentFilter;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
@@ -54,6 +57,18 @@ public class ServletConfig extends WebMvcConfigurerAdapter {
         LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName("lang");
         registry.addInterceptor(localeChangeInterceptor).addPathPatterns("/i18n");
+    }
+
+    @Bean
+    public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
+        return new HiddenHttpMethodFilter();
+    }
+    @Bean
+    public FilterRegistrationBean<HttpPutFormContentFilter> httpPutFormContentFilter() {
+        FilterRegistrationBean<HttpPutFormContentFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(new HttpPutFormContentFilter());
+        registrationBean.setOrder(0); // Set the order if you have other filters
+        return registrationBean;
     }
 
     }

@@ -29,7 +29,7 @@
 </head>
 <body>
     <div class="success-message">
-        <h1>Member Added Successfully</h1>
+        <h1>${successMessage}</h1>
     </div>
 </body>
 </html>

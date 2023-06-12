@@ -43,7 +43,7 @@ public class IssueBookController {
         return "issueBookSuccess";
     }
 
-    @ExceptionHandler(NumberFormatException.class)
+    @ExceptionHandler()
     public String handleMemberNotFoundException(Model model) {
         model.addAttribute("", "MemberNotFoundException");
         return "memberNotFoundError";

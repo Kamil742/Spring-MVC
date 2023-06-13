@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book Management</title>
+    <title>Issue Book</title>
     <style>
+        /* Add your custom CSS styles here */
         body {
             font-family: Arial, sans-serif;
             background-color: #778899; /* Thick Gray */
@@ -13,7 +14,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
         }
 
         label {
@@ -58,6 +58,13 @@
         .action-button:hover {
             background-color: #E8E8E8;
         }
+        .separator {
+            height: 4px;
+            width: 106%;
+            background-color: #fff;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
 
         .cancel-button {
             display: block;
@@ -76,67 +83,72 @@
         .cancel-button:hover {
             background-color: #E8E8E8;
         }
+        input:invalid {
+            border-color: red;
+        }
+
+        input:invalid:focus {
+            outline-color: red;
+        }
     </style>
 </head>
 <body>
     <div class="section">
-        <h1>Book Registration</h1>
+        <h1>Book Issue Form</h1>
+        <h3>Issue Book</h3>
 
-        <form:form action="/book/addBook" method="POST" modelAttribute="book">
+        <form:form method="POST" action="/issue/addForm">
             <div class="link-boxes">
-                <label for="bookName">Book Name</label>
-                <input id="bookName" type="text" name="bookName" path="bookName" class="action-button" />
+                <label for="memberId">Member ID</label>
+                <input id="memberId" type="number" name="memberId" class="action-button" />
             </div>
 
             <div class="link-boxes">
-                <label for="category">Category</label>
-                <select id="category" name="category" path="category" class="action-button">
-                    <option value="Fiction">Fiction</option>
-                    <option value="Novel">Novel</option>
-                    <option value="Mystery">Mystery</option>
-                    <option value="Code">Code</option>
-                    <option value="Short Story">Short Story</option>
+                <label for="memberName">Member Name</label>
+                <input id="memberName" type="text" name="member.name" class="action-button" />
+            </div>
+
+            <div class="link-boxes">
+                <label for="book">Book</label>
+                <select id="book" name="book.bookId" class="action-button">
+                    <option value="1">Book 1</option>
+                    <option value="2">Book 2</option>
+                    <option value="8">Book 3</option>
                 </select>
             </div>
 
             <div class="link-boxes">
-                <label for="author">Author</label>
-                <input id="author" type="text" name="author" path="author" class="action-button" />
+                <label for="issueDate">Issue Date</label>
+                <input id="issueDate" type="date" name="issueDate" class="action-button" />
             </div>
 
             <div class="link-boxes">
-                <label for="publisher">Publisher</label>
-                <select id="publisher" name="publisher" path="publisher" class="action-button">
-                    <option value="publisher1">Publisher 1</option>
-                    <option value="publisher2">Publisher 2</option>
-                    <option value="publisher3">Publisher 3</option>
-                </select>
+                <label for="returnDate">Return Date</label>
+                <input id="returnDate" type="date" name="returnDate" class="action-button" />
             </div>
-
+                <input type="submit" value="Issue" class="action-button" />
+        </form:form>
+        <div class="separator"></div>
+        <div><h3>Update Book Issue</h3></div>
+         <form:form method="GET" action="/issue/updateIssue">
             <div class="link-boxes">
-                <label for="pages">Number of Pages</label>
-                <input id="pages" type="number" name="noOfpages" path="noOfPages" class="action-button" />
+                <label for="issueBookId">Issue Book ID</label>
+                <input id="issueBookId" type="number" name="issueBookId" class="action-button" placeholder="Enter Valid Issue Book ID" required/>
             </div>
 
-            <div class="link-boxes">
-                <label for="edition">Edition</label>
-                <input id="edition" type="text" name="edition" path="edition" class="action-button" />
+            <input type="submit" value="Edit Issue Book" class="action-button" />
+        </form:form>
+        <div class="separator"></div>
+        <div><h3>Show All Issued Book Details</h3></div>
+            <div>
+                <form method="GET" action="/issue/allIssuedBooks">
+                    <input type="submit" value="Show All Issued Books Detail" class="action-button" />
+                </form>
             </div>
 
-            <input type="submit" value="Add" class="action-button" />
-        </form:form>
+        <div class="separator"></div>
 
-        <form:form action="/book/edit">
-            <input type="submit" value="Edit" class="action-button" />
-        </form:form>
-
-        <form:form action="/book/delete">
-            <input type="submit" value="Delete" class="action-button" />
-        </form:form>
-
-        <form:form action="/admin/cancel" style="display: flex; justify-content: center;">
-            <input type="submit" value="Cancel" class="cancel-button" style="width: 130px;" />
-        </form:form>
+        <a href="/webmvc/dashboard" class="cancel-button">Cancel</a>
     </div>
 </body>
 </html>

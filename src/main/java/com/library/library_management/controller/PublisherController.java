@@ -1,6 +1,7 @@
 package com.library.library_management.controller;
 
 import com.library.library_management.model.Publisher;
+import com.library.library_management.service.IPublisherService;
 import com.library.library_management.service.impl.PublisherServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

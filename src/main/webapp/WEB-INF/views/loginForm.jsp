@@ -77,7 +77,7 @@
             <h1>Login</h1>
         </div>
         <div class="form-container">
-            <form:form action="/webmvc/processLogin" modelAttribute="loginForm" method="post">
+            <form:form action="/auth-api/processLogin" modelAttribute="loginForm" method="post">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <form:input path="username" id="username" />

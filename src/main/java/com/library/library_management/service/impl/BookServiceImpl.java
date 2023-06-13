@@ -1,7 +1,9 @@
 package com.library.library_management.service.impl;
 
 import com.library.library_management.exceptions.BookNotFoundException;
+import com.library.library_management.model.Address;
 import com.library.library_management.model.Book;
+import com.library.library_management.model.Member;
 import com.library.library_management.repository.IBookRepository;
 import com.library.library_management.service.IBookService;
 import org.springframework.stereotype.Service;
@@ -18,43 +20,36 @@ public class BookServiceImpl implements IBookService {
 
 
     public Book addBook(Book book) {
-
         return bookRepository.save(book);
     }
 
     @Override
-    public String updateBook(Book book) {
-        Book existBook = bookRepository.findById(book.getBookId()).orElse(null);
-        if (existBook == null) {
-            throw new BookNotFoundException("Book Not Found");
-
-        } else {
-            bookRepository.save(existBook);
-            return "Book deleted successfully";
+    public Book updateBook(Book book) {
+        Book existingBook = bookRepository.findById(book.getBookId()).orElse(null);
+        if (existingBook == null) {
+            return null;
         }
+
+        existingBook.setBookName(book.getBookName());
+        existingBook.setEdition(book.getEdition());
+        existingBook.setNoOfPages(book.getNoOfPages());
+        return bookRepository.save(existingBook);
     }
 
     @Override
-    public String deleteBook(Book book) {
-        Book existBook = bookRepository.findById(book.getBookId()).orElse(null);
-        if (existBook == null) {
-            throw new BookNotFoundException("Book Not Found");
+    public void deleteBook(Book book){
 
-        } else {
-            bookRepository.delete(existBook);
-            return "Book Deleted successfully";
-        }
+            bookRepository.delete(book);
     }
-
     @Override
-    public Book getById(Long bookId) {
+    public Book getBookById(Long bookId) {
         return bookRepository.findById(bookId).orElseThrow(
                 () -> new BookNotFoundException("Book Not Found " + bookId)
         );
     }
 
     @Override
-    public List<Book> getAll() {
+    public List<Book> getAllBook() {
         return bookRepository.findAll();
 
     }

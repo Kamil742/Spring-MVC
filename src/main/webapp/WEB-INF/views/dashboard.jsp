@@ -58,7 +58,7 @@
     <div class="section">
         <h1 class="dashboard-title">Admin Dashboard</h1>
 
-        <form:form action="${pageContext.request.contextPath}/webmvc/category" method="get" id="categoryForm">
+        <form:form action="${pageContext.request.contextPath}/category/category_form" method="get" id="categoryForm">
             <button type="submit" class="action-button">Category</button>
         </form:form>
 
@@ -88,7 +88,7 @@
             <button type="submit" class="action-button">Return Book</button>
         </form:form>
 
-        <form:form action="${pageContext.request.contextPath}/webc/logout" method="get" id="logoutForm">
+        <form:form action="${pageContext.request.contextPath}/auth-api/login" method="get" id="logoutForm">
             <button type="submit" class="action-button">Logout</button>
         </form:form>
 

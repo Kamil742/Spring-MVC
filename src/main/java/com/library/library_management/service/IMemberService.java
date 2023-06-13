@@ -8,9 +8,11 @@ public interface IMemberService {
 
 
     void addMember(Member member, Address address);
-    String updateUser(Member user);
-    String deleteUser(Member user);
-    List<Member> getAll();
+    Member updateMember(Member member, Address address);
+
+    void deleteMember(Member member);
+    public List<Member> getAllMembers();
+
     Member getById(Long id);
 
 

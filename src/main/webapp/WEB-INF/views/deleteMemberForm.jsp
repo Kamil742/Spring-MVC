@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Members Management</title>
+    <title>Delete Member</title>
     <style>
         /* Add your custom CSS styles here */
         body {
@@ -77,47 +77,63 @@
         .cancel-button:hover {
             background-color: #E8E8E8;
         }
+
+        .delete-button {
+            display: block;
+            background-color: #FF0000; /* Red */
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin-left: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .delete-button:hover {
+            background-color: #CC0000;
+        }
+
+        .readonly-field {
+            background-color: #F5F5F5; /* White Smoke */
+            color: #333;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            width: 100%;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="section">
-        <h1>Members</h1>
+        <h1>Delete Member</h1>
 
-        <form:form method = "POST" action="/member/memberAdd">
+        <form:form method="POST" action="/member/deleteMember">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="hidden" name="memberId" value="${member.memberId}" />
+
             <div class="link-boxes">
                 <label for="name">Name</label>
-                <input id="name" type="text" name="name" path="name" class="action-button" />
+                <input id="name" type="text" name="name" value="${member.name}" class="readonly-field" readonly="true" />
             </div>
 
             <div class="link-boxes">
-                            <label for="location">Address</label>
-                            <input id="location" type="text" name="location" path="addresses[0].location" class="action-button" />
-                        </div>
+                <label for="location">Address</label>
+                <input id="location" type="text" name="location" value="${member.addresses[0].location}" class="readonly-field" readonly="true" />
+            </div>
 
             <div class="link-boxes">
                 <label for="phoneNumber">Phone Number</label>
-                <input id="phoneNumber" type="text" name="phoneNumber" path="addresses[0].phoneNumber" class="action-button" />
+                <input id="phoneNumber" type="text" name="phoneNumber" value="${member.addresses[0].phoneNumber}" class="readonly-field" readonly="true" />
             </div>
 
-            <input type="submit" value="Add" class="action-button" />
-        </form:form>
-
-        <div class="link-boxes">
-            <form:form action="/members/edit">
-                <input type="submit" value="Edit" class="action-button" />
-            </form:form>
-
-            <form:form action="/members/delete">
-                <input type="submit" value="Delete" class="action-button" />
-            </form:form>
-        </div>
-
-        <form:form action="/admin/cancel">
-            <input type="submit" value="Cancel" class="cancel-button" />
+            <input type="submit" value="Confirm Delete Member" class="delete-button" />
+            <a href="/webmvc/dashboard" class="cancel-button">Cancel</a>
         </form:form>
     </div>
 </body>
 </html>
-
-
-

@@ -16,10 +16,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookId;
     private String bookName;
-    private Long noOfPages;
+    private int noOfPages;
     private String edition;
 
-     @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
@@ -35,13 +35,6 @@ public class Book {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
-    @ManyToOne
-    @JoinColumn(name = "issueBook_id")
-    private IssueBook issueBook;
-
-    @ManyToOne
-    @JoinColumn(name = "returnBook_id")
-    private ReturnBook returnBook;
 
 }
 

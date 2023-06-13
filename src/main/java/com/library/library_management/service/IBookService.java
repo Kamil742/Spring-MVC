@@ -5,8 +5,8 @@ import com.library.library_management.model.Book;
 import java.util.List;
 public interface IBookService {
     Book addBook(Book book);
-    String updateBook(Book book);
-    String deleteBook(Book book);
-    Book getById(Long bookId);
-    List<Book>getAll();
+    public Book updateBook(Book book);
+    public void deleteBook(Book book);
+    Book getBookById(Long bookId);
+    List<Book>getAllBook();
 }

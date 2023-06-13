@@ -11,4 +11,12 @@ public interface IPublisherService {
     Publisher getById(Long publisher_id);
     List<Publisher>getAll();
 
+
+    //custom operations
+//    List<Book> getByName(String name);
+//    List<Book> getByNameAndEdition(String name,String edition);
+//    List<Book> getByGenre(String genre);
+//    List<Book> getByPrice(Double price);
+//    List<Book> getByPages(Long pages);
+//    List<Book> getByUserId(Long user_id);
 }

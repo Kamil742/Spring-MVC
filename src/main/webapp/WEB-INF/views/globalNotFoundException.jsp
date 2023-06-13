@@ -33,8 +33,8 @@
 <body>
     <div class="error-container">
         <h1>Oops....</h1>
-        <h1>Member is Not Found for the Given MemberId</h1>
-        <h2>You can try with a valid Member Id</h2>
+        <h1>${message}</h1>
+        <h2>You can try with a valid Id</h2>
     </div>
 </body>
 </html>

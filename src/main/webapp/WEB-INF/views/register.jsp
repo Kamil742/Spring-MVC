@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Category Management</title>
+    <title>Register Form</title>
     <style>
         /* Add your custom CSS styles here */
         body {
@@ -18,8 +18,8 @@
         }
 
         label {
-        margin: 5px;
-        text-align:start;
+            margin: 5px;
+            text-align: start;
         }
         .section {
             background-color: #778899;
@@ -48,7 +48,7 @@
             transition: background-color 0.3s;
             text-decoration: none;
             width: -webkit-fill-available;
-                margin-bottom: 2px
+            margin-bottom: 2px;
         }
 
         .action-button:last-child {
@@ -98,28 +98,33 @@
 </head>
 <body>
     <div class="section">
-        <h1>Category</h1>
+        <h1>Register Form</h1>
 
-        <form:form action="/category/addCategory" modelAttribute="category">
-            <div class="link-boxes" style="flex-direction:column">
-                <label for="category">Category</label>
-                <input id="category" type="text" name="category" class="action-button" />
+        <form:form action="/auth-api/processRegister" method="post" modelAttribute="user">
+
+            <div class="link-boxes" style="flex-direction: column;">
+                <label for="username">Username</label>
+                <form:input path="username" id="username" class="action-button" />
             </div>
 
-            <div class="link-boxes">
-                <input type="submit" value="Add" class="action-button" />
-                <form:form action="${pageContext.request.contextPath}/category/edit">
-                    <input type="submit" value="Edit" class="action-button" />
-                </form:form>
-
-                <form:form action="/category/delete">
-                    <input type="submit" value="Delete" class="action-button" />
-                </form:form>
+            <div class="link-boxes" style="flex-direction: column;">
+                <label for="password">Password</label>
+                <form:password path="password" id="password" class="action-button" />
             </div>
 
-            <form:form action="/category/cancel" style="display: flex; justify-content: center;">
-                <input type="submit" value="Cancel" class="cancel-button" style="width: 130px;" />
-            </form:form>
+            <input type="submit" value="Register" class="action-button" />
+        </form:form>
+
+        <form:form action="/login" method="get">
+            <input type="submit" value="Login" class="action-button" />
+        </form:form>
+
+        <form:form action="/forgot-password" method="get">
+            <input type="submit" value="Forgot Password" class="action-button" />
+        </form:form>
+
+        <form:form action="/cancel" style="display: flex; justify-content: center;">
+            <input type="submit" value="Cancel" class="cancel-button" style="width: 130px;" />
         </form:form>
     </div>
 </body>
